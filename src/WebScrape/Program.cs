@@ -1,3 +1,9 @@
-﻿// An example to go to a website, scrape it, return memory in both Memory and Span for performance.
+﻿namespace WebScrape;
 
-// Bonus, show off natively compiled Regular Expressions with C# AOT.
+internal static class Program
+{
+    private static void Main(string[] args)
+    {
+        var client = new HttpClient();
+    }
+}
