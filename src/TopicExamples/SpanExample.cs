@@ -9,6 +9,7 @@ public static class SpanExample
 
         // A span is a ref struct that is allocated on the stack.
         var arraySpan = new Span<int>(array);
+        // Marking this method as async will cause it not to compile due to the use of span.
         for (int i = 0; i < arraySpan.Length; i += 1)
         {
             arraySpan[i] = i;
