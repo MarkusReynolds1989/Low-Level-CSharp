@@ -4,6 +4,6 @@ internal static class Program
 {
     private static void Main()
     {
-        FunctionPointerExample.LocalMain();
+        PointersExample.LocalMain();
     }
 }

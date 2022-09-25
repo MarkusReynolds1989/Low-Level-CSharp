@@ -1,6 +1,6 @@
 ﻿namespace TopicExamples;
 
-public static class StackExample
+public static class StructExample
 {
     public static void LocalMain()
     {
