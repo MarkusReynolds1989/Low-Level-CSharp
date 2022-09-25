@@ -55,5 +55,6 @@ public static class PointersExample
 
         // Don't forget to free the memory when you are done or you could run into a memory leak.
         Marshal.FreeHGlobal((IntPtr) data);
+        // You don't have to worry about an accidental double free, if the IntPtr is already 0 then it will do nothing.
     }
 }

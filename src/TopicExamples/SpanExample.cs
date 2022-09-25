@@ -7,6 +7,15 @@ public static class SpanExample
         // Allocate a new array on the heap.
         var array = new int[10];
 
+        // This array is allocated on the stack.
+        // You should use span, otherwise you will get a pointer and have to manage the pointer.
+        // This will pop off the stack at the end of the stack frame.
+        Span<int> arrayStack = stackalloc int[10];
+        // Use stack allocation in much the same way you'd use struct, when you need great memory performance
+        // but for small memory footprints, otherwise you could run into a stack overflow.
+        // Because C# is so good at heap allocations, stack alloc might not actually be more efficient, so make sure
+        // to profile while deciding to use it.
+
         // A span is a ref struct that is allocated on the stack.
         var arraySpan = new Span<int>(array);
         // Marking this method as async will cause it not to compile due to the use of span.

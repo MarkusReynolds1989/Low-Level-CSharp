@@ -2,26 +2,6 @@
 
 public static class StructExample
 {
-    public static void LocalMain()
-    {
-        // This person object is a value type and is stack allocated. 
-        var tom = new Person("tom".AsMemory(), 32);
-        Console.WriteLine(tom.Age);
-        AddYearAge(tom);
-        Console.WriteLine(tom.Age);
-
-        var tim = new PersonC(32);
-        Console.WriteLine(tim.Age);
-        AddYearAge(tim);
-        Console.WriteLine(tim.Age);
-        
-        // When we pass the struct by reference we an mutate it.
-        // It is still on the stack, but we are not passing a copy of it, but a reference instead.
-        // This allows mutation.
-        AddYearAge(ref tom);
-        Console.WriteLine(tom.Age);
-    }
-
     private struct Person
     {
         public ReadOnlyMemory<char> Name { get; }
@@ -64,5 +44,26 @@ public static class StructExample
         // This is the struct that was stack allocated and we are actually
         // passing a reference to that place in the stack for us to modify instead of a copy.
         person.Age += 1;
+    }
+
+    public static void LocalMain()
+    {
+        // This person object is a value type and is stack allocated. 
+        var tom = new Person("tom".AsMemory(), 32);
+        Console.WriteLine(tom.Age);
+        AddYearAge(tom);
+        Console.WriteLine(tom.Age);
+
+        var tim = new PersonC(32);
+        Console.WriteLine(tim.Age);
+        AddYearAge(tim);
+        Console.WriteLine(tim.Age);
+
+        // When we pass the struct by reference we an mutate it.
+        // It is still on the stack, but we are not passing a copy of it, but a reference instead.
+        // This allows mutation.
+        AddYearAge(ref tom);
+
+        Console.WriteLine(tom.Age);
     }
 }

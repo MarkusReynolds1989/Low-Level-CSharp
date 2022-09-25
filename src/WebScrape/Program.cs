@@ -1,4 +1,4 @@
-﻿namespace WebScrape;
+﻿namespace LowLevelExamples;
 
 internal static class Program
 {
