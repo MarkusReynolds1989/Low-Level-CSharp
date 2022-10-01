@@ -2,10 +2,11 @@
 
 public static class StructExample
 {
-    private struct Person
+    // Defining it as a "ref struct" has guarantees that it won't move to the heap.
+    private ref struct Person
     {
         public ReadOnlyMemory<char> Name { get; }
-        public int                  Age  { get; set; }
+        public int Age { get; set; }
 
         public Person(ReadOnlyMemory<char> name, int age)
         {
