@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace LowLevelExamples;
+namespace WebScrape;
 
 internal static class Program
 {
