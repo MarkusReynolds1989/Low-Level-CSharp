@@ -8,7 +8,11 @@ internal static unsafe class Program
         @"C:\Users\marku\Code\C#\Low-Level-CSharp\src\RustInvoke\low_level_algo\target\debug\low_level_algo.dll")]
     // Using a raw pointer is the most unsafe way, but also the easiest way to pass information back and forth
     // via FFI.
+    // This is a Rust dll, but any C style ABI should work: C, D, C++, etc.
     private static extern void reverse_array(out int* input, uint size);
+
+    [DllImport(@"C:\Users\marku\Code\C#\Low-Level-CSharp\src\RustInvoke\other_ffi.dll")]
+    private static extern int max(int* input, uint size);
 
     private static void Main()
     {
@@ -28,6 +32,13 @@ internal static unsafe class Program
             Console.WriteLine(item);
         }
 
+        Console.WriteLine();
+
+        // From C.
+        // Don't worry about this too much, this is just to show that any native DLL with a C ABI will work.
+        var result = max(array, 10);
+
+        Console.WriteLine(result);
         // Don't forget to free the heap you allocated.
         Marshal.FreeHGlobal((IntPtr) array);
     }
