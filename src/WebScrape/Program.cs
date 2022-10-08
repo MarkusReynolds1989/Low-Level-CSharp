@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Runtime.InteropServices;
+using System.Text;
 
 namespace WebScrape;
 
@@ -31,7 +32,7 @@ internal static class Program
         var resultBuffer = new Memory<byte>(new byte[1024]);
 
         await LoadResultBuffer(resultBuffer);
-        
+
         // Suppose we only want the first 10 characters.
         var length = Encoding.Default.GetString(resultBuffer.Span[^4..^1]);
         Console.WriteLine(length);
