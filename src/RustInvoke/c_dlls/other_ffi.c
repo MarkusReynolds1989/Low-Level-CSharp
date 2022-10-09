@@ -1,6 +1,6 @@
 #include <stddef.h>
 
-extern int max(int* input, size_t length){
+extern int max(const int* input, size_t length){
     int result = -2147483648;
 
     for(size_t i = 0; i < length; i += 1){
