@@ -14,7 +14,7 @@ internal static unsafe class Program
     [DllImport(
         @"C:\Users\marku\Code\C#\Low-Level-CSharp\src\RustInvoke\low_level_algo\target\debug\low_level_algo.dll")]
     // Call sum_array from the Rust here.
-    private static extern int sum_array(int* input, uint size);
+    private static extern int sum_array(out int* input, uint size);
 
     [DllImport(@"C:\Users\marku\Code\C#\Low-Level-CSharp\src\RustInvoke\c_dlls\other_ffi.dll")]
     private static extern int max(int* input, uint size);
@@ -55,10 +55,11 @@ internal static unsafe class Program
         var resultMin = min(array, 10);
         Console.WriteLine(resultMin);
 
-        var resultSum = sum_array(array, 10);
+        // Not yet implemented.
+        var resultSum = sum_array(out array, 10);
         Console.WriteLine(resultSum);
 
-        // Don't forget to free the heap you allocated.
+        // Don't forget to free the heap space that was allocated.
         Marshal.FreeHGlobal((IntPtr) array);
 
         // Why do we care? Because we can use this for so many different things.
