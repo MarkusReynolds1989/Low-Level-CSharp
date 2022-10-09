@@ -13,3 +13,10 @@ pub unsafe extern fn reverse_array(input: *mut [i32], count: usize) {
         end -= 1;
     }
 }
+
+// Implement a function that sums up the given array of ints.
+#[no_mangle]
+pub unsafe extern fn sum_array(input: *const [i32], count: usize) -> i32 {
+    println!("Not yet implemented.");
+    0
+}

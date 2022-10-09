@@ -11,6 +11,11 @@ internal static unsafe class Program
     // This is a Rust dll, but any C style ABI should work: C, D, C++, etc.
     private static extern void reverse_array(out int* input, uint size);
 
+    [DllImport(
+        @"C:\Users\marku\Code\C#\Low-Level-CSharp\src\RustInvoke\low_level_algo\target\debug\low_level_algo.dll")]
+    // Call sum_array from the Rust here.
+    private static extern int sum_array(int* input, uint size);
+
     [DllImport(@"C:\Users\marku\Code\C#\Low-Level-CSharp\src\RustInvoke\c_dlls\other_ffi.dll")]
     private static extern int max(int* input, uint size);
 
@@ -49,6 +54,9 @@ internal static unsafe class Program
         // As you can see this will also work correctly.
         var resultMin = min(array, 10);
         Console.WriteLine(resultMin);
+
+        var resultSum = sum_array(array, 10);
+        Console.WriteLine(resultSum);
 
         // Don't forget to free the heap you allocated.
         Marshal.FreeHGlobal((IntPtr) array);
