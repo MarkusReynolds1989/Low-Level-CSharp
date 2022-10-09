@@ -27,11 +27,11 @@ public static class FunctionPointerExample
         SomeMethod(addPointer, typeof(MathOp));
     }
 
-    public static void SomeMethod(IntPtr function, Type type)
+    private static void SomeMethod(IntPtr function, Type type)
     {
         int[] testArray = {1, 2, 3, 4};
         var map = Marshal.GetDelegateForFunctionPointer(function, type);
-        foreach (int item in testArray)
+        foreach (var item in testArray)
         {
             // Will add one to each value in the array and write it out.
             Console.WriteLine(map.DynamicInvoke(item, 1));

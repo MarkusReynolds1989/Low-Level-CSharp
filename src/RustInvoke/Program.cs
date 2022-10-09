@@ -16,11 +16,19 @@ internal static unsafe class Program
     // Call sum_array from the Rust here.
     private static extern int sum_array(out int* input, uint size);
 
+    [DllImport(
+        @"C:\Users\marku\Code\C#\Low-Level-CSharp\src\RustInvoke\low_level_algo\target\debug\low_level_algo.dll")]
+    private static extern void iterate_over(IntPtr function, out int* input, uint count);
+
     [DllImport(@"C:\Users\marku\Code\C#\Low-Level-CSharp\src\RustInvoke\c_dlls\other_ffi.dll")]
     private static extern int max(int* input, uint size);
 
     [DllImport(@"C:\Users\marku\Code\C#\Low-Level-CSharp\src\RustInvoke\d_dlls\more_ffi.dll")]
     private static extern int min(int* input, uint size);
+
+    private delegate int NumOp(int input);
+
+    private static int Square(int input) => input * 2;
 
     // When we have to compile this to native code, we will have to pull the loose DLLs and bundle them up with the 
     // executable.
@@ -58,6 +66,16 @@ internal static unsafe class Program
         // Not yet implemented.
         var resultSum = sum_array(out array, 10);
         Console.WriteLine(resultSum);
+
+        // In this case we can see that we can pass a whole function down to Rust and it will also work.
+        NumOp square = Square;
+        var squarePointer = Marshal.GetFunctionPointerForDelegate(square);
+        iterate_over(squarePointer, out array, 10);
+
+        foreach (var item in span)
+        {
+            Console.WriteLine(item);
+        }
 
         // Don't forget to free the heap space that was allocated.
         Marshal.FreeHGlobal((IntPtr) array);
