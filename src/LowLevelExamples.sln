@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformInvokeConsole", "Pl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RustInvoke", "RustInvoke\RustInvoke.csproj", "{0C7897A1-C0E9-498A-8840-098F0EB0BA57}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpExample", "FSharpExample\FSharpExample.fsproj", "{87A051B9-D36A-4B35-ACE6-9E8CE086F5C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopicTests", "TopicTests\TopicTests.csproj", "{B49463D4-E3FD-4C99-8FA6-7978508A645B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,13 @@ Global
 		{0C7897A1-C0E9-498A-8840-098F0EB0BA57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C7897A1-C0E9-498A-8840-098F0EB0BA57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C7897A1-C0E9-498A-8840-098F0EB0BA57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87A051B9-D36A-4B35-ACE6-9E8CE086F5C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A051B9-D36A-4B35-ACE6-9E8CE086F5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A051B9-D36A-4B35-ACE6-9E8CE086F5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A051B9-D36A-4B35-ACE6-9E8CE086F5C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B49463D4-E3FD-4C99-8FA6-7978508A645B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B49463D4-E3FD-4C99-8FA6-7978508A645B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B49463D4-E3FD-4C99-8FA6-7978508A645B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B49463D4-E3FD-4C99-8FA6-7978508A645B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

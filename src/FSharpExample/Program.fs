@@ -1,5 +1,8 @@
 ﻿open System
 
+// Without the overhead of JIT compilation, the execution speed will be very fast.
+// This is only because it doesn't need to start up the VM at the beginning and the code is native.
+
 let rec count (list: List<'t>) =
     match list with
     | [] -> 0
@@ -21,6 +24,9 @@ let main _args =
 
     let result = count countThis
     let resultTwo = count countThat
+
+    let sum = List.sum countThat
+
     Console.WriteLine result
-    Console.WriteLine resultTwo 
+    Console.WriteLine resultTwo
     0

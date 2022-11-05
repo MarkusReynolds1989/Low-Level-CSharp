@@ -79,6 +79,7 @@ internal static unsafe class Program
 
         // Don't forget to free the heap space that was allocated.
         Marshal.FreeHGlobal((IntPtr) array);
+        Marshal.FreeHGlobal(squarePointer);
 
         // Why do we care? Because we can use this for so many different things.
         // I'll include some example ideas in the readme.

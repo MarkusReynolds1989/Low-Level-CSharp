@@ -1,12 +1,20 @@
 ﻿namespace TopicExamples;
 
+struct Example
+{
+    private int   x;
+    private float y;
+}
+
 public static class StructExample
 {
     // Defining it as a "ref struct" has guarantees that it won't move to the heap.
+    // This is our way of avoiding the implementation details problem where 
+    // we can't be sure if an item is on the heap or stack.
     private ref struct Person
     {
-        public ReadOnlyMemory<char> Name { get; }
-        public int Age { get; set; }
+        private ReadOnlyMemory<char> Name { get; }
+        public  int                  Age  { set; get; }
 
         public Person(ReadOnlyMemory<char> name, int age)
         {
@@ -27,23 +35,23 @@ public static class StructExample
 
     private static void AddYearAge(PersonC person)
     {
-        // Will mutate because the person class is a heap allocated reference type.
-        // This means it is passed by reference.
+        // Will mutate because the person class is a reference type.
+        // Which means it will be passed by reference.
         person.Age += 1;
     }
 
     private static void AddYearAge(Person person)
     {
         // Won't mutate the person because it was passed by value (value type). 
-        // This is a copy, think of it as a brand new stack allocation of person localized in this stack frame.
-        person.Age += 1;
+        // This is a copy, think of it as a brand new allocation of person localized in this stack frame.
+        person.Age = 3;
     }
 
     // How can we mutate the struct? Pass by reference.
     private static void AddYearAge(ref Person person)
     {
-        // This is the struct that was stack allocated and we are actually
-        // passing a reference to that place in the stack for us to modify instead of a copy.
+        // Although this struct is pass by value, we are passing it by reference so it will be used
+        // as if it were a reference type.
         person.Age += 1;
     }
 
