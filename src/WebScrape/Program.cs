@@ -11,8 +11,8 @@ internal static class Program
     // Can't use a ref struct here, because the main method is async.
     private struct CatFact
     {
-        public Memory<byte> Fact;
-        public int          Length;
+        public readonly Memory<byte> Fact;
+        public readonly int          Length;
 
         public CatFact(Memory<byte> fact, int length)
         {
@@ -39,7 +39,7 @@ internal static class Program
         // This is just a small example, imagine if we instead got a huge response.
         // We could slice into any indexes of the Memory block as spans without extra allocations, as we would if this was
         // just a byte array.
-        var resultBuffer = new Memory<byte>(new byte[2048]);
+        var resultBuffer = new Memory<byte>(new byte[512]);
         var lengthRegex = new Regex(@"length"":(?'length'\d+)");
         await LoadResultBuffer(resultBuffer);
 
