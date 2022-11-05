@@ -9,21 +9,21 @@ internal static partial class Program
     [LibraryImport("kernel32.dll",
                    EntryPoint = "lstrcpyn",
                    StringMarshalling = StringMarshalling.Utf8)]
-    private static partial IntPtr CopyString(IntPtr destination, IntPtr src, int length);
+    private static partial void CopyString(IntPtr destination, IntPtr src, int length);
 
     [LibraryImport("msvcrt.dll", EntryPoint = "memcpy")]
-    private static partial IntPtr CopyMemory(IntPtr destination, IntPtr src, UIntPtr count);
+    private static partial void CopyMemory(IntPtr destination, IntPtr src, UIntPtr count);
 
     [LibraryImport("msvcrt.dll", EntryPoint = "fopen_s", StringMarshalling = StringMarshalling.Utf8)]
     private static partial int OpenFile(out IntPtr file,
-                                        string fileName,
-                                        string mode);
+                                        string     fileName,
+                                        string     mode);
 
     [LibraryImport("msvcrt.dll", EntryPoint = "fread", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial int ReadFile(Span<byte> buffer, int size, int number, IntPtr file);
+    private static partial void ReadFile(Span<byte> buffer, int size, int number, IntPtr file);
 
     [LibraryImport("msvcrt.dll", EntryPoint = "fclose")]
-    private static partial int CloseFile(IntPtr stream);
+    private static partial void CloseFile(IntPtr stream);
 
     private static unsafe void Main()
     {
@@ -50,7 +50,7 @@ internal static partial class Program
         CopyString(name, temp, 4);
 
         // Allocated 100 ints on the heap.
-        var numbersPtr = Marshal.AllocHGlobal(sizeof(int) * 100);
+        var numbersPtr = Marshal.AllocHGlobal(sizeof(int)     * 100);
         var destinationPtr = Marshal.AllocHGlobal(sizeof(int) * 100);
         // Get a span to cover that memory.
         var numbers = new Span<int>(numbersPtr.ToPointer(), 100)
