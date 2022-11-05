@@ -18,7 +18,7 @@ public static class FunctionPointerExample
 
         foreach (var item in testArray)
         {
-            // Will add one to each value in the array and write it out.
+            // Yield a new value that has 1 added to it.
             yield return map.DynamicInvoke(item, 1);
         }
     }
