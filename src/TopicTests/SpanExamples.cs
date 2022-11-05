@@ -1,11 +1,9 @@
-using TopicExamples;
-
 namespace TopicTests;
 
 public class SpanExamples
 {
     [Fact]
-    public void SpanOne()
+    public void SpanBasics()
     {
         // A span is a ref struct that is allocated on the stack.
         // It is a handle to an arbitrary block of memory.
@@ -46,6 +44,6 @@ public class SpanExamples
 
         // When we convert it to an array, it goes back to being a heap allocated data
         // structure. But we can save on allocations everywhere before by using Span.
-        Assert.Equal(values.ToArray(), array);
+        Assert.Equal(values, array);
     }
 }

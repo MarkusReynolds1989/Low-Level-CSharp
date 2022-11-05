@@ -1,7 +1,5 @@
 ﻿namespace TopicExamples;
 
-using System.Linq;
-
 public static class SpanExample
 {
     private static void Reverse(Span<int> array)
@@ -18,7 +16,7 @@ public static class SpanExample
         }
     }
 
-    public static Span<int> Values()
+    public static IEnumerable<int> Values()
     {
         Span<int> arrayStack = stackalloc int[10];
         // Can't return this because it's on the stack, it will
@@ -27,7 +25,7 @@ public static class SpanExample
 
         // It may still be worthwhile to operate on the item on the stack, however.
         // The stack memory is closer together and faster to iterate.
-        // Using a span, even over a regular array will still be fast.
+        // Using a span, even over a regular array will still be faster than a regular array.
         for (var i = 0; i < arrayStack.Length; i += 1)
         {
             arrayStack[i] = i;
