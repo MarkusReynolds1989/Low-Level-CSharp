@@ -38,4 +38,15 @@ public static class SpanExample
         // Once we put it on the heap as an array, it can be returned without issues.
         return arrayStack.ToArray();
     }
+
+    // Like the above, but we just modify the values instead,
+    // that way we don't have to allocate.
+
+    public static void Values(scoped Span<int> values)
+    {
+        for (var i = 0; i < values.Length; i += 1)
+        {
+            values[i] = i;
+        }
+    }
 }

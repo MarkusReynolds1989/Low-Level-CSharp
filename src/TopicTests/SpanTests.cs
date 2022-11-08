@@ -46,4 +46,15 @@ public class SpanExamples
         // structure. But we can save on allocations everywhere before by using Span.
         Assert.Equal(values, array);
     }
+
+    [Fact]
+    public void ScopedTest()
+    {
+        Span<int> values = stackalloc int[10];
+        // This is stack allocated, however, we can still pass it to the other function because of the 
+        // 'scoped' keyword. This allows us to assert that the item we are using's lifetime won't exceed the lifetime
+        // of where it is called from.
+        SpanExample.Values(values);
+        Assert.Equal(0, values[0]);
+    }
 }
