@@ -1,4 +1,6 @@
-﻿namespace TopicExamples;
+﻿using System.Text;
+
+namespace TopicExamples;
 
 // If you see the IL code for this, it will show you that it's a value type 
 // as opposed to an object(reference) type.
@@ -42,11 +44,12 @@ public static class StructExample
         person.Age += 1;
     }
 
-    public static void AddYearAge(Person person)
+    public static int AddYearAge(Person person)
     {
         // Won't mutate the person because it was passed by value (value type). 
         // This is a copy, think of it as a brand new allocation of person localized in this stack frame.
-        person.Age = 3;
+        person.Age += 1;
+        return person.Age;
     }
 
     // How can we mutate the struct? Pass by reference.
