@@ -16,7 +16,7 @@ public static class SpanExample
         }
     }
 
-    public static IEnumerable<int> Values()
+    public static IEnumerable<int> AssignValues()
     {
         Span<int> arrayStack = stackalloc int[10];
         // Can't return this because it's on the stack, it will
@@ -41,8 +41,7 @@ public static class SpanExample
 
     // Like the above, but we just modify the values instead,
     // that way we don't have to allocate.
-
-    public static void Values(scoped Span<int> values)
+    public static void AssignValues(Span<int> values)
     {
         for (var i = 0; i < values.Length; i += 1)
         {

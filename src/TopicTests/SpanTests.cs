@@ -33,7 +33,7 @@ public class SpanExamples
     {
         // This span is allocated on the stack, reversed on the stack, and then
         // returned as a heap allocated array, but still with a span pointing to it.
-        var values = SpanExample.Values();
+        var values = SpanExample.AssignValues();
         var array = new int[10];
         var counter = 0;
         for (var i = 9; i > 0; i -= 1)
@@ -54,7 +54,7 @@ public class SpanExamples
         // This is stack allocated, however, we can still pass it to the other function because of the 
         // 'scoped' keyword. This allows us to assert that the item we are using's lifetime won't exceed the lifetime
         // of where it is called from.
-        SpanExample.Values(values);
+        SpanExample.AssignValues(values);
         Assert.Equal(0, values[0]);
     }
 }
